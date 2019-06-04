@@ -2,7 +2,7 @@ import numpy as np
 
 
 class Momentum:
-    def __init__(self, lr=0.01, momentum=0.09):
+    def __init__(self, lr=0.01, momentum=0.9):
         self.lr = lr
         self.momentum = momentum
         self.v = {}
@@ -24,6 +24,7 @@ class SGD:
 
     def update(self, params, grads):
         for key in params.keys():
+            #print("params[", key, "]: ", params[key], "self.lr: ", self.lr, "grads[key]: ", grads[key])
             params[key] -= self.lr * grads[key]
 
 

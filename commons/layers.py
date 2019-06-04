@@ -1,4 +1,5 @@
 import numpy as np
+from commons.functions import *
 
 class Relu:
     def __init__(self):
@@ -49,7 +50,7 @@ class Affine:
         self.original_x_shape = x.shape
         x = x.reshape(x.shape[0], -1)
         self.x = x
-
+        #print("shape(x): ", np.shape(x), " shape(W): ", np.shape(self.W), "shape(b): ", np.shape(self.b))
         out = np.dot(self.x, self.W) + self.b
 
         return out
