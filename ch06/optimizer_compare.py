@@ -1,6 +1,6 @@
 from collections import OrderedDict
 import sys, os
-sys.path.append("C:\\Users\\wenyang.zhang\\Documents\\MySpace\\practice\\github\\Deep_learn_Begin")
+sys.path.append(os.getcwd())
 from commons.optimizer import SGD
 from commons.optimizer import Adam
 from commons.optimizer import AdaGrad
@@ -30,15 +30,17 @@ idx = 1
 # 遍历优化器
 for key in optimizers:
     optimizer = optimizers[key]
-    x_history = []
+    x_history = [] # 迭代优化参数列表
     y_history = []
     params["x"], params["y"] = init_pos[0], init_pos[1]
     # 构建优化器
     for i in range(30):
+        # 此处添加的就是每轮经过优化器优化过的参数
         x_history.append(params["x"])
         y_history.append(params["y"])
 
         grads["x"], grads["y"] = df(params["x"], params["y"])
+        # 优化参数（下轮迭代将会把优化过得参数进行记录）
         optimizer.update(params, grads)
     
     # 生成测试数据
