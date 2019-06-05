@@ -15,7 +15,8 @@ class MultiLayerNetwork:
         self.activation = activation
         self.weight_decay_lambda = weight_decay_lambda
 
-        # 初始化weight权重参数
+        # 初始化weight权重参数,params其实主要就是用于Affine层的初始化只用；
+        # 后面在求loss的时候虽然也有用，但是如果decay=0的话也就没有实际作用了
         self.params = {}
         self.__init_weight(activation)
         # 生成层
