@@ -63,10 +63,10 @@ class MultiLayerNetwork:
             W = self.params["W" + str(idx)]
             weigh_decay += 0.5 * self.weight_decay_lambda * np.sum(W ** 2)
 
-        self.lastlayer.forward(y, t) + weigh_decay
+        return self.lastlayer.forward(y, t) + weigh_decay
 
     def gradient(self, x, t):
-        # 构建正向链
+        # 构建正向链，本身，我们是要对loss函数求导，所以这里先构建一下正向链
         self.loss(x, t)
         # 输出层（softmax）求导
         dout = 1
